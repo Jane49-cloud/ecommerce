@@ -1,0 +1,25 @@
+ .card{
+    background:	#F7F9F9;
+    margin:10px;
+    }
+ img{
+    max-width:100%;
+    height:200px;
+    }
+
+card-container{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px 30px;
+    background: red;
+}
+.categories{
+min-height:150px;
+background:#EAECEE;
+}
+.categories button{
+margin-top:30px;
+margin:6px;
+color:black;
+}
