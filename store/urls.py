@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, re_path
-from django.urls import path
 from product import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # path('', views.index),
     re_path(r'^$', views.index, name='home'),
-    re_path(r'^single_category/$', views.single_category, name='single_category'),
+    re_path(r'^categories/(?P<pk>\d+)/$', views.category_products, name='category_products'),
     re_path(r'^admin/', admin.site.urls),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

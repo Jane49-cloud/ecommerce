@@ -26,10 +26,15 @@
          </ul>
   </div>
 </nav>
+ <ol class="breadcrumb">
+        {% block breadcrumb %}
+
+        {% endblock %}
+      </ol>
+
 
 
  <div class="Container">
-
      {% block content %}
 
      {% endblock %}

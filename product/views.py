@@ -1,22 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .products import Product
 from .category import Category
 
 
 def index(request):
-    products = Product.objects.all()
+    # category = None
     categorys = Category.objects.all()
-    return render(request, 'index.html', {'products': products, 'categorys': categorys})
+    products = Product.objects.all()
+    # if category_slug:
+    #     category = get_object_or_404(category, slug=category_slug)
+    #     products = Product.filter(category=category)
+    return render(request, 'index.html', {'products': products,
+                                          'categorys': categorys})
 
 
-def single_category(category_id):
-    if category_id:
-        products = Product.objects.filter(category=category_id)
-        return render('single-category.html', {'products': products})
+def category_products(request, pk):
+    category = Category.objects.get(pk=pk)
+    if pk:
+        product = Product.objects.filter(category=pk)
     else:
-        products = Product.get_all_products()
-        return render('index.html', {'products': products})
-
-
-def get_all_products():
-    return Product.objects.all()
+        product = Product.objects.all()
+    return render(request, 'single_category.html', {'category': category, 'product': product})
