@@ -1,0 +1,9 @@
+.card{
+display:flex;
+background:gray;
+width:60vh;
+margin:auto
+}
+body{
+overflow-x:hidden
+}

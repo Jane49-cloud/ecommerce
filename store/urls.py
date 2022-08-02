@@ -23,6 +23,7 @@ urlpatterns = [
     # path('', views.index),
     re_path(r'^$', views.index, name='home'),
     re_path(r'^categories/(?P<pk>\d+)/$', views.category_products, name='category_products'),
+    re_path(r'^products/(?P<pk>\d+)/$', views.single_product, name='single_product'),
     re_path(r'^admin/', admin.site.urls),
 ]
 if settings.DEBUG:

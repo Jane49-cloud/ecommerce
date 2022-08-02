@@ -1,20 +1,18 @@
-{%  extends 'base.html'%}
-
-{% block content %}
+{% extends 'base.html' %}
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-<div class="categories">
-     {% for category in categorys%}
-     <button class="btn btn-light"><a href="{% url 'category_products' category.pk %}">{{ category.name }}</a></button>
-     {% endfor %}
-</div>
 
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Back</a></li>
+  <li class="breadcrumb-item active">{{ product.name }}</li>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
 
+{% block content %}
 <div class="row card-container mb5"  >
- {% for product in products%}
+ {% for product in product%}
 
-    <a href="{% url 'single_product' product.pk %}">
         <div class="col">
     <div class="card" style="width: 18rem;">
         <div>
@@ -25,16 +23,13 @@
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                  <p class="card-text"><h6> ksh:{{product.price}}</h6></p>
-<!--                <p class="card-text"> {{product.description}}</p>-->
+                <p class="card-text"> {{product.description}}</p>
                 <p class="card-text"> Stock:{{product.stock}}</p>
                 <a href="#" class="btn btn-primary">add to cart</a>
             </div>
         </div>
     </div>
 </div>
-    </a>
-    {% endfor %}
+{% endfor %}
 </div>
-
-
 {% endblock %}

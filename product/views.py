@@ -21,3 +21,17 @@ def category_products(request, pk):
     else:
         product = Product.objects.all()
     return render(request, 'single_category.html', {'category': category, 'product': product})
+
+
+def single_product(request, pk):
+    id = Product.objects.get(pk=pk)
+    if pk:
+        product = Product.objects.filter(id=pk)
+    else:
+        product = Product.objects.all()
+    return render(request, 'single_product.html', {'product': product, 'product_id': id})
+
+
+def cart_view(request):
+    return render(request, 'cart.html')
+
