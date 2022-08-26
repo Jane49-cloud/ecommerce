@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .products import Product
 from .category import Category
-
+from django.views.generic import CreateView
+from .form import SignUpForm
+from django.contrib.messages.views import SuccessMessageMixin
 
 def index(request):
     # category = None
@@ -35,3 +37,10 @@ def single_product(request, pk):
 def cart_view(request):
     return render(request, 'cart.html')
 
+
+
+class SignUpView(SuccessMessageMixin, CreateView):
+    form_class= SignUpForm
+    template_name = 'signin.html'
+    success_url ='/'
+    success_message = "A new member signed up!"

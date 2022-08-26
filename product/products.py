@@ -11,7 +11,6 @@ class Product(models.Model):
     image = models.ImageField(upload_to='assets')
     stock = models.IntegerField(default=0)
 
-
     @staticmethod
     def get_products_by_id(ids):
         return Product.objects.filter(id__in=ids)
@@ -26,3 +25,7 @@ class Product(models.Model):
             return Product.objects.filter(category=category_id)
         else:
             return Product.get_all_products()
+        
+    def __str__(self):
+        return self.name
+

@@ -19,12 +19,14 @@ from product import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     # path('', views.index),
     re_path(r'^$', views.index, name='home'),
     re_path(r'^categories/(?P<pk>\d+)/$', views.category_products, name='category_products'),
     re_path(r'^products/(?P<pk>\d+)/$', views.single_product, name='single_product'),
     re_path(r'^admin/', admin.site.urls),
+     re_path(r'^signin/', views.SignUpView.as_view(), name='signin'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
