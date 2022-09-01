@@ -16,9 +16,28 @@
 <div class="row card-container mb5"  >
  {% for product in product%}
 
+    <style>
+        a{
+text-decoration:none;
+color:black;
+
+        }
+            .card{
+                background:whitesmoke;
+                width: 300px;
+                margin: 20px;
+                border-radius: 0.55rem;
+                margin: auto;
+                 margin-bottom: 20px;
+            }
+
+    </style>
+
         <div class="col">
-    <div class="card" style="width: 18rem;">
-        <div>
+    <div class="card" style="width: 18rem;" >
+        <a href="{% url 'single_product' product.pk %}">
+
+              <div style="background: #EAECEE; margin: 20px;">
             <img class="card-img-top" src="{{product.image.url}}"   alt="">
 <!--            {% if   product.image.size == Null%}-->
 <!--            product.image = "{ %static 'img/fallback.png' %}"-->
@@ -31,6 +50,8 @@
                 <a href="#" class="btn btn-primary">add to cart</a>
             </div>
         </div>
+        </a>
+
     </div>
 </div>
 {% endfor %}

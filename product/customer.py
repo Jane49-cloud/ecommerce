@@ -8,25 +8,20 @@ class Customer(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=100)
 
-
-# def register(self):
-#     self.save()
-
-
-# @staticmethod
-# def get_customer_by_email(email):
-#     try:
-#         return Customer.objects.get(email=email)
-#     except:
-#         return False
+    def register(self):
+        self.save()
 
 
-# def isExists(self):
-#     if Customer.objects.filter(email=self.email):
-#         return True
+    @staticmethod
 
-#     return False
+    def get_customer_by_email(email):
+       try:
+            return Customer.objects.get(email=email)
+       except:
+            return False
+    def isExists(self):
+        if Customer.objects.filter(email=self.email):
+            return True
+    def __str__(self):
+        return self.first_name
 
-
-def __str__(self):
-    return self.name

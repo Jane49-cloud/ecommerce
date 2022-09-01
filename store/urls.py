@@ -18,6 +18,7 @@ from django.urls import include, re_path
 from product import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
@@ -26,7 +27,11 @@ urlpatterns = [
     re_path(r'^categories/(?P<pk>\d+)/$', views.category_products, name='category_products'),
     re_path(r'^products/(?P<pk>\d+)/$', views.single_product, name='single_product'),
     re_path(r'^admin/', admin.site.urls),
-     re_path(r'^signin/', views.SignUpView.as_view(), name='signin'),
+    re_path(r'^signin/', views.SignUpView.as_view(), name='signin'),
+    re_path(r'^cart/', views.cart_view, name='cart')
+    
+
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

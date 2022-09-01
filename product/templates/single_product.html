@@ -4,32 +4,51 @@
 <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
 {% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'home' %}">Back</a></li>
-  <li class="breadcrumb-item active">{{ product.name }}</li>
+<li class="breadcrumb-item"><a href="{% url 'home' %}">Back</a></li>
+<li class="breadcrumb-item active">{{ product.name }}</li>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
-{% block content %}
-<div class="row card-container mb5"  >
- {% for product in product%}
 
-        <div class="col">
-    <div class="card" style="width: 18rem;">
-        <div>
-            <img class="card-img-top" src="{{product.image.url}}"   alt="">
-<!--            {% if   product.image.size == Null%}-->
-<!--            product.image = "{ %static 'img/fallback.png' %}"-->
-<!--            {% endif %}-->
-            <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                 <p class="card-text"><h6> ksh:{{product.price}}</h6></p>
-                <p class="card-text"> {{product.description}}</p>
-                <p class="card-text"> Stock:{{product.stock}}</p>
-                <a href="#" class="btn btn-primary">add to cart</a>
+
+{% block content %}
+
+<style>
+   .single-container{
+        background:#f5f5f9;
+          width: 90vw;
+            margin: auto;    }
+      .card{
+                background:whitesmoke;
+                width: 500px;
+                margin: 20px;
+                border-radius: 0.55rem;
+                margin: auto;
+                 margin-bottom: 20px;
+          margin-top: 10px;
+            }
+</style>
+<div class="row card-container mb5  single-container">
+    {% for product in product%}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div>
+                <img class="card-img-top" src="{{product.image.url}}" alt="">
+                <div class="card-body" style="background: #EAECEE;border-radius: 0.5rem">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text"><h6> ksh:{{product.price}}</h6></p>
+                    <p class="card-text"> {{product.description}}</p>
+                    <p class="card-text"> Stock:{{product.stock}}</p>
+                    <a href="#" class="btn btn-primary">add to cart</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
+
+    <script>
+
+    </script>
+
 </div>
 {% endblock %}

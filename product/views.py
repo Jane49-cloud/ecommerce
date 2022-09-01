@@ -1,9 +1,17 @@
+import email
+import errno
 from django.shortcuts import render, get_object_or_404
 from .products import Product
 from .category import Category
 from django.views.generic import CreateView
-from .form import SignUpForm
+from .form import SignUpForm, LoginForm
 from django.contrib.messages.views import SuccessMessageMixin
+from .customer import Customer
+from django.shortcuts import redirect, HttpResponseRedirect
+from django.contrib.auth.hashers import check_password
+from django.views import View
+from django.contrib.auth import authenticate, login
+
 
 def index(request):
     # category = None
@@ -38,9 +46,13 @@ def cart_view(request):
     return render(request, 'cart.html')
 
 
-
 class SignUpView(SuccessMessageMixin, CreateView):
-    form_class= SignUpForm
+    form_class = SignUpForm
     template_name = 'signin.html'
-    success_url ='/'
+    success_url = '/'
     success_message = "A new member signed up!"
+
+
+def logout(request):
+    request.session.clear()
+    return redirect('login')
