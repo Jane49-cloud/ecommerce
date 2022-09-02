@@ -5,5 +5,97 @@
 {% endblock %}
 
 {%block content%}
+<style>
+     .cart-orders {
+         width: 90vw;
+         height: auto;
+         margin: auto;
+         display: flex;
+         column-gap: 7%;
+         margin-top: 50px;
+         flex-wrap: wrap;
+     }
+     .purchases{
+         width: 60%;
+         box-sizing: border-box;
+         /*height: 600px;*/
+         background-color: #EAECEE;
+         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+         border-radius: 0.5rem;
+     }
+     .checkout{
+         width: 22%;
+        background-color: white;
+          box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+         height: 150px;
 
+
+     }
+     .checkout .title{
+         display: flex;
+         justify-content: center;
+         height: 50px;
+         height: auto;
+         background-color:whitesmoke;
+     }
+
+     .title{
+         display: flex;
+         justify-content: center;
+     }
+     .checkout .btn{
+         width: 95%;
+         margin: auto;
+               display: flex;
+               justify-content: center;
+           }
+      .items{
+          display: flex;
+          justify-content: space-between;
+          margin: 20px;
+      }
+      .buttons{
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          margin:5px
+      }
+@media only screen and (max-width: 600px) {
+  .cart-orders{
+    background-color: lightblue;
+  }
+}
+
+
+</style>
+<div class="cart-orders">
+    <div class="purchases">
+        <h2 class="title">cart {3}</h2>
+        <hr>
+
+
+        <div class="items">
+            {% load static %}
+    <img src="{% static 'img/heels.jpg' %}" alt="My image">
+            <h4> Blue women heels</h4>
+            <h3> ksh:{1000}</h3>
+            <h3>3</h3>
+
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-primary"><i class="fa-solid fa-trash"></i>  &nbsp Remove</button>
+            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+            <button class="btn btn-primary"><i class="fa-solid fa-minus"></i></button>
+        </div>
+</div>
+<div class="checkout">
+
+    <h3 class="title">Cart summery</h3>
+    <h4>totals ksh {3000}</h4>
+    <hr>
+    <button class="btn btn-primary">Checkout</button>
+
+</div>
+</div>
 {% endblock %}
